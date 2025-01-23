@@ -83,4 +83,4 @@ The AI-powered e-commerce platform is designed to offer personalized shopping ex
 4. **API Development & Integration**
 5. **Build AI Model for Recommendations**
 
-This will serve as the foundation for the project. Let me know if you want to add or modify any features! 🚀
+This will serve as the foundation for the project.
