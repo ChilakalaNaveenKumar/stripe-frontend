@@ -1,29 +1,27 @@
-# Use Node.js base image
+# Use a base image with bash support
 FROM node:22
 
-# Set the working directory
+# Set working directory inside the container
 WORKDIR /app
 
-# Copy package.json and install dependencies
-COPY package.json package-lock.json ./
-
-# Install NVM and set Node.js 16
-RUN curl -fsSL https://raw.githubusercontent.com/nvm-sh/nvm/v0.39.1/install.sh | bash \
+# Install NVM and set Node.js 22
+RUN curl -fsSL https://raw.githubusercontent.com/nvm-sh/nvm/v0.39.4/install.sh | bash \
     && export NVM_DIR="$HOME/.nvm" \
     && . "$NVM_DIR/nvm.sh" \
     && nvm install 22 \
     && nvm use 22
 
+# Copy package.json and package-lock.json first
+COPY package*.json ./
+
+# Install dependencies
 RUN npm install
 
-# Copy project files
+# Copy rest of the application files
 COPY . .
 
-# Build the frontend
-RUN npm run build
-
-# Expose the frontend port
+# Expose the frontend development port
 EXPOSE 3000
 
-# Use Node.js 16 before running the app
-CMD ["bash", "-c", "nvm use 16 && npm run dev"]
+# Use Node.js 22 before running the frontend application
+CMD ["bash", "-c", "source $HOME/.nvm/nvm.sh && nvm use 22 && npm run dev"]
