@@ -1,7 +1,7 @@
-export default {
+export default defineNuxtConfig ({
   // Global page headers: https://go.nuxtjs.dev/config-head
   head: {
-    title: 'ai-ecommerce-frontend',
+    title: 'stripefrontend',
     htmlAttrs: {
       lang: 'en'
     },
@@ -28,7 +28,7 @@ export default {
   components: true,
 
   // Modules for dev and build (recommended): https://go.nuxtjs.dev/config-modules
-  buildModules: [
+  modules: [
     // https://go.nuxtjs.dev/typescript
     '@nuxt/typescript-build',
     // https://go.nuxtjs.dev/tailwindcss
@@ -42,4 +42,4 @@ export default {
   // Build Configuration: https://go.nuxtjs.dev/config-build
   build: {
   }
-}
+})

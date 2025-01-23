@@ -1,4 +1,4 @@
-# ai-ecommerce-frontend
+# stripefrontend
 
 ## Build Setup
 
