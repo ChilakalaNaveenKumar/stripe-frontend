@@ -84,3 +84,124 @@ The AI-powered e-commerce platform is designed to offer personalized shopping ex
 5. **Build AI Model for Recommendations**
 
 This will serve as the foundation for the project.
+
+
+
+# Project README
+
+## Overview
+This project is designed to run a multi-container application using **Docker Compose**. The application consists of the following services:
+
+1. **Backend**: Runs the server-side logic.
+2. **Frontend**: Serves the user interface.
+3. **Database (PostgreSQL)**: Stores application data.
+4. **Redis**: Used for caching.
+
+### Prerequisites
+Make sure you have the following installed:
+
+1. [Docker](https://docs.docker.com/get-docker/)
+2. [Docker Compose](https://docs.docker.com/compose/install/) (bundled with Docker Desktop)
+
+To verify your installation, run:
+```bash
+docker --version
+docker-compose --version
+```
+
+---
+
+## Steps to Run the Project
+
+### 1. Clone the Repository
+Clone this project repository to your local machine:
+```bash
+git clone <repository-url>
+cd <repository-directory>
+```
+
+### 2. Build and Start the Application
+Use Docker Compose to build and start all services:
+```bash
+docker-compose up --build
+```
+This command:
+- Builds Docker images for the backend and frontend.
+- Starts all services defined in the `docker-compose.yml` file.
+
+### 3. Access the Application
+- **Frontend**: [http://localhost:3000](http://localhost:3000)
+- **Backend**: [http://localhost:8090](http://localhost:8090)
+
+### 4. Environment Variables
+The following environment variables are used in the project. Make sure to update them as necessary:
+
+- **Backend**:
+  - `SPRING_PROFILES_ACTIVE=prod`
+  - Database configuration (in `docker-compose.yml`):
+    - `POSTGRES_USER`
+    - `POSTGRES_PASSWORD`
+    - `POSTGRES_DB`
+
+- **Frontend**: No special environment variables required for this setup.
+
+- **Database (PostgreSQL)**:
+  - `POSTGRES_USER`
+  - `POSTGRES_PASSWORD`
+  - `POSTGRES_DB`
+
+These variables are preconfigured in the `docker-compose.yml` file.
+
+### 5. Stop the Application
+To stop the running containers:
+```bash
+docker-compose down
+```
+This stops and removes all containers defined in the `docker-compose.yml` file.
+
+### 6. Cleanup (Optional)
+To remove all Docker containers, networks, and images:
+```bash
+docker-compose down --rmi all --volumes
+```
+
+---
+
+## Project Structure
+
+```
+.
+├── stripe-backend/         # Backend application source code
+├── stripe-frontend/        # Frontend application source code
+├── docker-compose.yml      # Docker Compose configuration file
+└── README.md               # Project documentation
+```
+
+---
+
+## Troubleshooting
+
+1. **Port Conflicts**:
+   - If ports `3000` or `8090` are already in use, update the `docker-compose.yml` file to use different ports.
+
+2. **Access Denied to Database**:
+   - Ensure the `POSTGRES_USER` and `POSTGRES_PASSWORD` values in the `docker-compose.yml` file match the database initialization values.
+
+3. **Logs**:
+   - To view service logs, use:
+     ```bash
+     docker-compose logs <service-name>
+     ```
+
+4. **Rebuild Images**:
+   - If you make changes to the code, rebuild the images with:
+     ```bash
+     docker-compose up --build
+     ```
+
+---
+
+## Next Steps
+For future deployment, Kubernetes can be used to manage the services in a production environment. Documentation for Kubernetes deployment will be provided later.
+
+

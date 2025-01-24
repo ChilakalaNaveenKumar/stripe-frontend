@@ -16,6 +16,22 @@ export default defineNuxtConfig ({
     ]
   },
 
+  vite: {
+    server: {
+      host: '0.0.0.0', // Allow external access
+      port: 3000,
+      strictPort: true,
+      hmr: {
+        host: 'stripe.local', // Allow Hot Module Reloading on this domain
+      },
+      allowedHosts: ['stripe.local', 'localhost'], // Allow both stripe.local and localhost
+    },
+  },
+
+  nitro: {
+    compatibilityDate: '2025-01-24',
+  },
+
   // Global CSS: https://go.nuxtjs.dev/config-css
   css: [
   ],
@@ -41,5 +57,7 @@ export default defineNuxtConfig ({
 
   // Build Configuration: https://go.nuxtjs.dev/config-build
   build: {
-  }
+  },
+
+  compatibilityDate: '2025-01-23'
 })
